@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+:root {
+	--poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
+
+	--light: #F9F9F9;
+	--blue: #3C91E6;
+	--light-blue: #CFE8FF;
+	--grey: #eee;
+	--dark-grey: #AAAAAA;
+	--dark: #342E37;
+	--red: #DB504A;
+	--yellow: #FFCE26;
+	--light-yellow: #FFF2C6;
+	--orange: #FD7238;
+	--light-orange: #FFE0D3;
+}
+
+html {
+	overflow-x: hidden;
+}
+
+body.dark {
+	--light: #0C0C1E;
+	--grey: #060714;
+	--dark: #FBFBFB;
+}
+
+body {
+	background: var(--grey);
+	overflow-x: hidden;
+}
+
+/*  */
+
+
+.container {
+height: 100vh;
+width: 100vw;
+max-height: 800px;
+max-width: 1280px;
+min-height: 600px;
+min-width: 1000px;
+display: flex;
+justify-content: space-around;
+align-items: center;
+margin: 0 auto;
+}
+
+.border {
+height: 369px;
+width: 290px;
+background: transparent;
+border-radius: 10px;
+transition: border 1s;
+position: relative;
+
+&:hover {
+	border: 1px solid white;
+}
+}
+
+.card {
+height: 379px;
+width: 300px;
+border-radius: 10px;
+transition: background 0.8s;
+overflow: hidden;
+background: black;
+box-shadow: 0 70px 63px -60px #000000;
+display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+
+.icons {
+	position: absolute;
+	fill: #fff;
+	color: #fff;
+	height: 130px;
+	top: 226px;
+	width: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+
+h2,
+.fa {
+	opacity: 0;
+	transition: opacity 1s;
+}
+}
+
+.card0,
+.card1,
+.card2 {
+background-size: 300px;
+
+&:hover {
+	background-size: 600px;
+
+	h2,
+	.fa {
+	opacity: 1;
+	}
+}
+}
+
+.card0 {
+background: url('https://i.pinimg.com/736x/8f/a0/51/8fa051251f5ac2d0b756027089fbffde--terry-o-neill-al-pacino.jpg') center center no-repeat;
+
+&:hover {
+	background: url('https://i.pinimg.com/736x/8f/a0/51/8fa051251f5ac2d0b756027089fbffde--terry-o-neill-al-pacino.jpg') left center no-repeat;
+}
+}
+
+.card1 {
+background: url('https://i.pinimg.com/originals/28/d2/e6/28d2e684e7859a0dd17fbd0cea00f8a9.jpg') center center no-repeat;
+
+&:hover {
+	background: url('https://i.pinimg.com/originals/28/d2/e6/28d2e684e7859a0dd17fbd0cea00f8a9.jpg') left center no-repeat;
+}
+}
+
+.card2 {
+background: url('https://i.pinimg.com/originals/ee/85/08/ee850842e68cfcf6e3943c048f45c6d1.jpg') center center no-repeat;
+
+&:hover {
+	background: url('https://i.pinimg.com/originals/ee/85/08/ee850842e68cfcf6e3943c048f45c6d1.jpg') left center no-repeat;
+}
+}
+
+h2 {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: white;
+	margin: 20px;
+}
+
+
+
+
