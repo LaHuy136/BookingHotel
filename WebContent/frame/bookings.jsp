@@ -1,5 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+	<%@ page import="java.util.ArrayList" %>
+	<%@ page import="Model.Bean.Booking" %>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,177 +40,23 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+						 <tr>
+						 	<% ArrayList<Booking> bkArray = (ArrayList<Booking>)request.getAttribute("bkArray"); 
+						for(int i = 0; i < bkArray.size(); i++) {
+							%>
 								<td>
-									<p><%= (String)session.getAttribute("roomID")%></p>
+									<p>bkArray.get(i).getRoomID()</p>
 								</td>
-                                <td>BK001</td>
-								<td><%= (String)session.getAttribute("checkinDate")%></td>
-                                <td><%= (String)session.getAttribute("checkoutDate")%></td>
-                                <td><%= (int)session.getAttribute("numberGuests")%></td>
-                                <td><%= (int)session.getAttribute("totalprice")%>$</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-                            <tr>
-								<td>
-									<p>ID01</p>
-								</td>
-                                <td>BK001</td>
-								<td>06-12-2023</td>
-                                <td>08-12-2023</td>
-                                <td>1000$</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-                            <tr>
-								<td>
-									<p>ID01</p>
-								</td>
-                                <td>BK001</td>
-								<td>06-12-2023</td>
-                                <td>08-12-2023</td>
-                                <td>1000$</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-
-                            <tr>
-								<td>
-									<p>ID01</p>
-								</td>
-                                <td>BK001</td>
-								<td>06-12-2023</td>
-                                <td>08-12-2023</td>
-                                <td>1000$</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-                            <tr>
-								<td>
-									<p>ID01</p>
-								</td>
-                                <td>BK001</td>
-								<td>06-12-2023</td>
-                                <td>08-12-2023</td>
-                                <td>1000$</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-                            <tr>
-								<td>
-									<p>ID01</p>
-								</td>
-                                <td>BK001</td>
-								<td>06-12-2023</td>
-                                <td>08-12-2023</td>
-                                <td>1000$</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-
-                            <tr>
-								<td>
-									<p>ID01</p>
-								</td>
-                                <td>BK001</td>
-								<td>06-12-2023</td>
-                                <td>08-12-2023</td>
-                                <td>1000$</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-                            <tr>
-								<td>
-									<p>ID01</p>
-								</td>
-                                <td>BK001</td>
-								<td>06-12-2023</td>
-                                <td>08-12-2023</td>
-                                <td>1000$</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-                            <tr>
-								<td>
-									<p>ID01</p>
-								</td>
-                                <td>BK001</td>
-								<td>06-12-2023</td>
-                                <td>08-12-2023</td>
-                                <td><input type="checkbox" name="append" id=""></td>
-                                <td><input type="checkbox" name="breakfast" id=""></td>
-                                <td>1000$</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-
-                            <tr>
-								<td>
-									<p>ID01</p>
-								</td>
-                                <td>BK001</td>
-								<td>06-12-2023</td>
-                                <td>08-12-2023</td>
-                                <td><input type="checkbox" name="append" id=""></td>
-                                <td><input type="checkbox" name="breakfast" id=""></td>
-                                <td>1000$</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-                            <tr>
-								<td>
-									<p>ID01</p>
-								</td>
-                                <td>BK001</td>
-								<td>06-12-2023</td>
-                                <td>08-12-2023</td>
-                                <td><input type="checkbox" name="append" id=""></td>
-                                <td><input type="checkbox" name="breakfast" id=""></td>
-                                <td>1000$</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-                            <tr>
-								<td>
-									<p>ID01</p>
-								</td>
-                                <td>BK001</td>
-								<td>06-12-2023</td>
-                                <td>08-12-2023</td>
-                                <td><input type="checkbox" name="append" id=""></td>
-                                <td><input type="checkbox" name="breakfast" id=""></td>
-                                <td>1000$</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-
-                            <tr>
-								<td>
-									<p>ID01</p>
-								</td>
-                                <td>BK001</td>
-								<td>06-12-2023</td>
-                                <td>08-12-2023</td>
-                                <td><input type="checkbox" name="append" id=""></td>
-                                <td><input type="checkbox" name="breakfast" id=""></td>
-                                <td>1000$</td>
-								<td><span class="status completed">Completed</span></td>
-							</tr>
-                            <tr>
-								<td>
-									<p>ID01</p>
-								</td>
-                                <td>BK001</td>
-								<td>06-12-2023</td>
-                                <td>08-12-2023</td>
-                                <td><input type="checkbox" name="append" id=""></td>
-                                <td><input type="checkbox" name="breakfast" id=""></td>
-                                <td>1000$</td>
-								<td><span class="status process">Process</span></td>
-							</tr>
-                            <tr>
-								<td>
-									<p>ID01</p>
-								</td>
-                                <td>BK001</td>
-								<td>06-12-2023</td>
-                                <td>08-12-2023</td>
-                                <td><input type="checkbox" name="append" id=""></td>
-                                <td><input type="checkbox" name="breakfast" id=""></td>
-                                <td>1000$</td>
-								<td><span class="status pending">Pending</span></td>
-							</tr>
-                            
-							
+                                <td><%= bkArray.get(i).getBookingID()%></td>
+                                <td><%=bkArray.get(i).getUserID()%></td>
+								<td><%=bkArray.get(i).getCheckInDate()%></td>
+                                <td><%=bkArray.get(i).getCheckOutDate()%></td>
+                                <td><%=bkArray.get(i).getNumGuest()%></td>
+                                 <td><%=bkArray.get(i).getTotalPrice()%>$</td>
+								<td><span class="status process"><%=bkArray.get(i).getStatus()%></span></td>
+							</tr> 
+                           <%} %>
+                     
 						</tbody>
 					</table>
 				</div>

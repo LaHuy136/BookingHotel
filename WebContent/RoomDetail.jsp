@@ -288,6 +288,15 @@
         checkoutInput.addEventListener('change', updateNumberOfNights);
 
         checkinInput.addEventListener('change', function () {
+        	 var currentDate = new Date();
+             var selectedDate = new Date(checkinInput.value);
+
+             if (selectedDate <= currentDate) {
+                 checkinInput.valueAsDate = currentDate;
+                 nightsInput.value = 0;
+             }
+        	
+        	
             checkoutInput.min = checkinInput.value;
             if (checkinInput.value > checkoutInput.value) {
                 checkoutInput.value = checkinInput.value;

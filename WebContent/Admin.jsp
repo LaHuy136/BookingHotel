@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ 	<%@ page import="java.sql.Date" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,19 +27,7 @@
 
 </style>
 <body>
-<% 
-	String roomID = (String)request.getAttribute("roomid");
-	String checkinDate = (String)request.getAttribute("checkinDate");
-	String checkoutDate = (String)request.getAttribute("checkoutDate");
-	int numberGuests = (int)request.getAttribute("numberGuests");
-	int totalPrice = (int)request.getAttribute("totalprice");
 
-	session.setAttribute("roomID", roomID);
-	session.setAttribute("checkinDate", checkinDate);
-	session.setAttribute("checkoutDate", checkoutDate);
-	session.setAttribute("numberGuests", numberGuests);
-	session.setAttribute("totalprice", totalPrice);
-%>
     <div class="frame-container">
         <iframe src="./frame/side-bar.jsp" frameborder="0" name = "t2"
                 style="height:100vh ; width: 280px "></iframe>
