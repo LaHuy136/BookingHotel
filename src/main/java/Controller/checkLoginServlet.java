@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -32,23 +33,39 @@ public class checkLoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		if(BO.checkLogin(email, password, session)) {
-			String role = (String)session.getAttribute("role");
-			if("admin".equals(role)) {
-				bkArray = BO.getInfoBooking();
-				request.setAttribute("bkArray", bkArray);
-				RequestDispatcher rd = request.getRequestDispatcher("Admin.jsp");
-			    rd.forward(request, response);
-			}
-			else {
-				String roomname= (String) session.getAttribute("RoomName");
-				String roomid = (String) session.getAttribute("RoomID");
-				roomArray = BO.getInfoRoom(session);
-				request.setAttribute("RoomID", roomid);
-				request.setAttribute("RoomName", roomname);
-				request.setAttribute("roomArray", roomArray);
-				RequestDispatcher rd = request.getRequestDispatcher("User.jsp");
-			    rd.forward(request, response);
-			}
+			String UserID = (String) session.getAttribute("UserID");
+			String UserName = (String) session.getAttribute("UserName");
+			String Email = (String) session.getAttribute("Email");
+			String Role = (String) session.getAttribute("Role");
+			PrintWriter printWriter = response.getWriter();
+			
+			printWriter.println(UserID);
+			printWriter.println(UserName);
+			printWriter.println(Email);
+			printWriter.println(Role);
+			
+			
+//			if("admin".equals(Role)) {
+//				bkArray = BO.getInfoBooking();
+//				request.setAttribute("UserID", UserID);
+//				request.setAttribute("Email", Email);
+//				request.setAttribute("UserName", UserName);
+//				request.setAttribute("Role", Role);
+//				request.setAttribute("bkArray", bkArray);
+//				RequestDispatcher rd = request.getRequestDispatcher("Admin.jsp");
+//			    rd.forward(request, response);
+//			}
+//			else {
+//				String Roomname= (String) session.getAttribute("RoomName");
+//				String Roomid = (String) session.getAttribute("RoomID");
+//				roomArray = BO.getInfoRoom(session);
+//				request.setAttribute("UserName", UserName);
+//				request.setAttribute("RoomID", Roomid);
+//				request.setAttribute("RoomName", Roomname);
+//				request.setAttribute("roomArray", roomArray);
+//				RequestDispatcher rd = request.getRequestDispatcher("User.jsp");
+//			    rd.forward(request, response);
+//			}
 		}
 		else {
 			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");

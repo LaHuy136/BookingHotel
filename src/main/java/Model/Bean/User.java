@@ -1,13 +1,15 @@
 package Model.Bean;
 
 public class User {
-	String UserID, Username, Password, Email, Role;
+	String Username, Password, Email, Role;
+	int UserID;
+	
 
-	public String getUserID() {
+	public int getUserID() {
 		return UserID;
 	}
 
-	public void setUserID(String userID) {
+	public void setUserID(int userID) {
 		UserID = userID;
 	}
 

@@ -1,7 +1,6 @@
 package Model.DAO;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -21,10 +20,14 @@ public class BookingDAO {
 			String sql = "SELECT * FROM account WHERE Email = '" + email + "' AND Password = '" + password + "'";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				String Name = rs.getString("Username");
+				int UserID = rs.getInt("UserID");
+				String UserName = rs.getString("Username");
+				String Email = rs.getString("Email");
 				String Role = rs.getString("Role");
-				session.setAttribute("name", Name);
-				session.setAttribute("role", Role);
+				session.setAttribute("UserID", UserID);
+				session.setAttribute("UserName", UserName);
+				session.setAttribute("Email", Email);
+				session.setAttribute("Role", Role);
 				return true;
 			}
 		} catch(Exception ex){
@@ -68,30 +71,30 @@ public class BookingDAO {
 	}
 	
 	public ArrayList<Room> getInfoRoom(HttpSession session) {
-		ArrayList<Room> result = new ArrayList<Room>();
+		ArrayList<Room> resultRoom = new ArrayList<Room>();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String url = "jdbc:mysql://localhost:3306/bookinghotel";	
 			Connection con = DriverManager.getConnection(url, "root", "");
 			Statement stmt = con.createStatement();
-			String sql = "SELECT * FROM rooms";
+			String sql = "SELECT * FROM room";
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()) {
 				Room room = new Room();
 				room.setName(rs.getString("Name"));
 				session.setAttribute("RoomName", rs.getString("Name"));
-	            room.setRoomID(rs.getString("room_id"));
-	            session.setAttribute("RoomID", rs.getString("room_id"));
-	            room.setType(rs.getString("type"));
-	            room.setDescription(rs.getString("description"));
-	            room.setPrice(rs.getInt("price_per_night"));
-	            room.isAvailability(rs.getBoolean("availability"));
-	            result.add(room);
+	            room.setRoomID(rs.getString("RoomID"));
+	            session.setAttribute("RoomID", rs.getString("RoomID"));
+	            room.setType(rs.getString("Type"));
+	            room.setDescription(rs.getString("Description"));
+	            room.setPrice(rs.getInt("PriceperNight"));
+	            room.isAvailability(rs.getBoolean("Availability"));
+	            resultRoom.add(room);
 			}
 		} catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}
-		return result;
+		return resultRoom;
 	}
 	
 	public boolean insertBooking(String RoomID, int NumGuest, java.util.Date checkinDate, java.util.Date checkoutDate, int totalPrice, String status) {
@@ -100,7 +103,7 @@ public class BookingDAO {
 			String url = "jdbc:mysql://localhost:3306/bookinghotel";	
 			Connection con = DriverManager.getConnection(url, "root", "");
 			Statement stmt = con.createStatement();
-			String sql = "INSERT INTO bookings(room_id, nums_guest, check_in_date, check_out_date, total_price, status) VALUES ('"
+			String sql = "INSERT INTO bookings(RoomID, NumGuests, CheckinDate, CheckoutDate, TotalPrice, Status) VALUES ('"
 					+ RoomID + "','"
 					+ NumGuest + "','"
 					+ checkinDate + "','"
@@ -118,30 +121,30 @@ public class BookingDAO {
 	}
 	
 	public ArrayList<Booking> getInfoBooking( ) {
-		ArrayList<Booking> result = new ArrayList<Booking>();
+		ArrayList<Booking> resultBK = new ArrayList<Booking>();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String url = "jdbc:mysql://localhost:3306/bookinghotel";	
 			Connection con = DriverManager.getConnection(url, "root", "");
 			Statement stmt = con.createStatement();
-			String sql = "SELECT * FROM bookings";
+			String sql = "SELECT * FROM booking";
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()) {
 				Booking bk = new Booking();
-				bk.setBookingID(rs.getInt("Booking_id"));
+				bk.setBookingID(rs.getInt("BookingID"));
 				bk.setUserID(rs.getInt("UserID"));
-				bk.setRoomID(rs.getString("room_id"));
-	            bk.setNumGuest(rs.getInt("nums_guest"));
-	            bk.setCheckInDate(rs.getDate("check_in_date"));
-	            bk.setCheckOutDate(rs.getDate("check_out_date"));
-	            bk.setTotalPrice(rs.getInt("total_price"));
-	            bk.setStatus(rs.getString("status"));
-	            result.add(bk);
+				bk.setRoomID(rs.getString("RoomID"));
+	            bk.setNumGuest(rs.getInt("NumGuests"));
+	            bk.setCheckInDate(rs.getDate("CheckinDate"));
+	            bk.setCheckOutDate(rs.getDate("CheckoutDate"));
+	            bk.setTotalPrice(rs.getInt("TotalPrice"));
+	            bk.setStatus(rs.getString("Status"));
+	            resultBK.add(bk);
 			}
 		} catch(Exception ex){
 			System.out.println(ex.getMessage());
 		}
-		return result;
+		return resultBK;
 	}
 	
 }
